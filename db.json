@@ -1,0 +1,131 @@
+{
+  "cart": [
+    {
+      "id": 0,
+      "gameId": 1,
+      "amount": 4
+    },
+    {
+      "id": 1,
+      "gameId": 2,
+      "amount": 1
+    },
+    {
+      "id": "2acf",
+      "gameId": 1,
+      "amount": 1
+    },
+    {
+      "id": "549f",
+      "gameId": 2,
+      "amount": 1
+    },
+    {
+      "id": "2d30",
+      "gameId": 1,
+      "amount": 1
+    },
+    {
+      "id": "b9f2",
+      "gameId": 2,
+      "amount": 1
+    },
+    {
+      "id": "e707",
+      "gameId": 7,
+      "amount": 1
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "title": "Elderwood Saga",
+      "genre": "RPG",
+      "platform": "PC",
+      "releaseYear": 2022,
+      "developer": "Mythic Realms",
+      "price": 9.2
+    },
+    {
+      "id": 2,
+      "title": "Starfall Odyssey",
+      "genre": "Sci-Fi Adventure",
+      "platform": "PlayStation 5",
+      "releaseYear": 2023,
+      "developer": "Nova Games",
+      "price": 8.7
+    },
+    {
+      "id": 3,
+      "title": "SpeedRush XT",
+      "genre": "Racing",
+      "platform": "Xbox Series X",
+      "releaseYear": 2021,
+      "developer": "Velocity Studios",
+      "price": 7.9
+    },
+    {
+      "id": 4,
+      "title": "Battlefield Shadows",
+      "genre": "Shooter",
+      "platform": "PC",
+      "releaseYear": 2024,
+      "developer": "Titan Corp",
+      "price": 8.4
+    },
+    {
+      "id": 5,
+      "title": "Puzzle Portals",
+      "genre": "Puzzle",
+      "platform": "Nintendo Switch",
+      "releaseYear": 2020,
+      "developer": "BrainBox Studios",
+      "price": 8.1
+    },
+    {
+      "id": 6,
+      "title": "Farm Life Legacy",
+      "genre": "Simulation",
+      "platform": "PC",
+      "releaseYear": 2019,
+      "developer": "Harvest Games",
+      "price": 7.5
+    },
+    {
+      "id": 7,
+      "title": "Knight's Honor: Reforged",
+      "genre": "Action RPG",
+      "platform": "PlayStation 5",
+      "releaseYear": 2023,
+      "developer": "DragonForge",
+      "price": 9
+    },
+    {
+      "id": 8,
+      "title": "Mystic Tactics",
+      "genre": "Strategy",
+      "platform": "PC",
+      "releaseYear": 2022,
+      "developer": "Strategem Studios",
+      "price": 8.3
+    },
+    {
+      "id": 9,
+      "title": "Virtual Ballers 2024",
+      "genre": "Sports",
+      "platform": "Xbox Series X",
+      "releaseYear": 2024,
+      "developer": "Elite Sports Interactive",
+      "price": 7.8
+    },
+    {
+      "id": 10,
+      "title": "Galaxy Raiders",
+      "genre": "Action Adventure",
+      "platform": "PC",
+      "releaseYear": 2021,
+      "developer": "Cosmic Ventures",
+      "price": 8.6
+    }
+  ]
+}

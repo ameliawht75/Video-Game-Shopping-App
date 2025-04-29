@@ -9,31 +9,6 @@
       "id": 1,
       "gameId": 2,
       "amount": 1
-    },
-    {
-      "id": "2acf",
-      "gameId": 1,
-      "amount": 1
-    },
-    {
-      "id": "549f",
-      "gameId": 2,
-      "amount": 1
-    },
-    {
-      "id": "2d30",
-      "gameId": 1,
-      "amount": 1
-    },
-    {
-      "id": "b9f2",
-      "gameId": 2,
-      "amount": 1
-    },
-    {
-      "id": "e707",
-      "gameId": 7,
-      "amount": 1
     }
   ],
   "games": [

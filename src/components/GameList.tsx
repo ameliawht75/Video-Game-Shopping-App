@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react"
-import type { CartItem, Game } from '../types'
+import type { Game } from '../types'
 
-type Props = {
-  cartItems: CartItem[],
-  setCartItems: (newValue: CartItem[]) => void
-  games: Game[],
-  setGames: (newValue: Game[]) => void
-}
-
-export default function GameList({
-  setCartItems, cartItems, games, setGames
-}: Props) {
+export default function GameList() {
+  const [games, setGames] = useState<Game[]>([])
   const [isLoading, setIsLoading] = useState(false) //Loading indicator
   const [isAddingToCart, setIsAddingToCart] = useState(false) //Loading indicator for adding to cart
   const [error, setError] = useState<null | string>(null) //Error handling
@@ -56,17 +48,15 @@ export default function GameList({
       })
       if (!response.ok) {
         setError("There was an error adding the item to the cart: " + response.statusText)
-      } else {
-      const newlyCreatedItem = await response.json() //this will have an id on it 
-      //make the change on the front end
-      setCartItems([...cartItems, newlyCreatedItem])
-      }
+      } 
     } catch (error: any) {
       setError("There was an error adding the item to the cart: " + error.message)
     }
     setIsAddingToCart(false)
   }
   return (
+    <>
+  <h2 className="display-5 mb-4">Check Out Our Games!</h2>
     <div className="d-flex flex-wrap gap-3">
       {isLoading && <p className="text-body-tertiary">Loading...</p>}
       {error && <p className="text-danger">{error}</p>}
@@ -85,5 +75,6 @@ export default function GameList({
         </div>
       ))}
     </div>
+    </>
   )
 }

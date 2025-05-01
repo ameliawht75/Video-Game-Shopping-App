@@ -1,19 +1,24 @@
 {
   "cart": [
     {
-      "id": 0,
+      "id": "0",
       "gameId": 1,
       "amount": 4
     },
     {
-      "id": 1,
+      "id": "1",
       "gameId": 2,
+      "amount": 1
+    },
+    {
+      "id": "c7ac",
+      "gameId": "1",
       "amount": 1
     }
   ],
   "games": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Elderwood Saga",
       "genre": "RPG",
       "platform": "PC",
@@ -22,7 +27,7 @@
       "price": 9.2
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Starfall Odyssey",
       "genre": "Sci-Fi Adventure",
       "platform": "PlayStation 5",
@@ -31,7 +36,7 @@
       "price": 8.7
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "SpeedRush XT",
       "genre": "Racing",
       "platform": "Xbox Series X",
@@ -40,7 +45,7 @@
       "price": 7.9
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Battlefield Shadows",
       "genre": "Shooter",
       "platform": "PC",
@@ -49,7 +54,7 @@
       "price": 8.4
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Puzzle Portals",
       "genre": "Puzzle",
       "platform": "Nintendo Switch",
@@ -58,7 +63,7 @@
       "price": 8.1
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Farm Life Legacy",
       "genre": "Simulation",
       "platform": "PC",
@@ -67,7 +72,7 @@
       "price": 7.5
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Knight's Honor: Reforged",
       "genre": "Action RPG",
       "platform": "PlayStation 5",
@@ -76,7 +81,7 @@
       "price": 9
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Mystic Tactics",
       "genre": "Strategy",
       "platform": "PC",
@@ -85,7 +90,7 @@
       "price": 8.3
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Virtual Ballers 2024",
       "genre": "Sports",
       "platform": "Xbox Series X",
@@ -94,7 +99,7 @@
       "price": 7.8
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Galaxy Raiders",
       "genre": "Action Adventure",
       "platform": "PC",

@@ -14,7 +14,7 @@ export const gamesListLoader = async () => {
     console.error("Failed to load games:", error);
     return [];
   }
-}
+};
 
 export default function GameList() {
     const games = useLoaderData() as Game[]

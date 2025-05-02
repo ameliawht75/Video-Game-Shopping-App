@@ -1,10 +1,11 @@
-import { useState } from "react"
-import type { Game } from '../types'
-import { useLoaderData, Link } from "react-router-dom"
+import { useState } from "react";
+import type { Game } from "../types";
+import { useLoaderData, Link } from "react-router-dom";
+import { Card, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 
 export const gamesListLoader = async () => {
   try {
-    const response = await fetch('http://localhost:3000/games');
+    const response = await fetch("http://localhost:3000/games");
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -17,56 +18,85 @@ export const gamesListLoader = async () => {
 };
 
 export default function GameList() {
-    const games = useLoaderData() as Game[]
-    const [isLoading] = useState(true) //Loading indicator for the games list
-    const [isAddingToCart, setIsAddingToCart] = useState(false) //Loading indicator for adding to cart
-    const [error, setError] = useState<null | string>(null) //Error handling
+  const games = useLoaderData() as Game[];
+  const [isAddingToCart, setIsAddingToCart] = useState(false); // Loading indicator for adding to cart
+  const [error, setError] = useState<null | string>(null); // Error handling
 
-
-    const addToCart = async (gameId: number) => {
-      const newCartItem = {
-        gameId: gameId,
-        amount: 1
+  const addToCart = async (gameId: number) => {
+    const newCartItem = {
+      gameId: gameId,
+      amount: 1,
+    };
+    setIsAddingToCart(true);
+    try {
+      const response = await fetch("http://localhost:3000/cart", {
+        method: "POST",
+        body: JSON.stringify(newCartItem),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        setError("There was an error adding the item to the cart: " + response.statusText);
       }
-      //make the change on the backend
-      setIsAddingToCart(true)
-      try {
-        const response = await fetch('http://localhost:3000/cart', {
-          method: 'POST',
-          body: JSON.stringify(newCartItem),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        if (!response.ok) {
-          setError("There was an error adding the item to the cart: " + response.statusText)
-        }
-      } catch (error: any) {
-        setError("There was an error adding the item to the cart: " + error.message)
-      }
-      setIsAddingToCart(false)
+    } catch (error: any) {
+      setError("There was an error adding the item to the cart: " + error.message);
     }
-    return (
-      <>
-        <h2 className="display-5 mb-4">Check Out Our Games!</h2>
-        <div className="d-flex flex-wrap gap-3">
-          {error && <p className="text-danger">{error}</p>}
-          {!isLoading && !error && games.length === 0 && <p className="text-body-tertiary">No games found</p>}
-          {!isLoading && !error && games.length > 0 && <h2 className="display-5 mb-4">Check Out Our Games!</h2>}
-          {games.map(game => (
-            <div key={game.id} className="card flex-grow-1">
-              <h3 className="card-title">{game.title}</h3>
-              <p className="card-text">{game.genre}</p>
-              <p><Link to={"/games/" + game.id} className="btn btn-secondary mb-2">Details</Link></p>
-              <button className="btn btn-primary"
-                disabled={isAddingToCart}
-                onClick={() => addToCart(game.id)}
-              >
-                {isAddingToCart ? "Adding..." : "$" + game.price.toFixed(2)}
-              </button>
-            </div>
-          ))}
-        </div>
-      </>
-    )
+    setIsAddingToCart(false);
+  };
+
+  return (
+    <Container className="py-4">
+      <h2 className="display-5 mb-4 text-center">Check Out Our Games!</h2>
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Row className="g-4">
+        {games.length === 0 ? (
+          <Col>
+            <p className="text-muted text-center">No games found</p>
+          </Col>
+        ) : (
+          games.map((game) => (
+            <Col key={game.id} md={4} lg={3}>
+              <Card className="h-100 shadow-sm">
+                <Card.Body>
+                  <Card.Title>{game.title}</Card.Title>
+                  <Card.Text>
+                    <strong>Genre:</strong> {game.genre}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Price:</strong> ${game.price.toFixed(2)}
+                  </Card.Text>
+                  <div className="d-flex justify-content-between">
+                    <Link to={`/games/${game.id}`} className="btn btn-secondary">
+                      Details
+                    </Link>
+                    <Button
+                      variant="primary"
+                      disabled={isAddingToCart}
+                      onClick={() => addToCart(game.id)}
+                    >
+                      {isAddingToCart ? (
+                        <>
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />{" "}
+                          Adding...
+                        </>
+                      ) : (
+                        "Add to Cart"
+                      )}
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+        )}
+      </Row>
+    </Container>
+  );
 }

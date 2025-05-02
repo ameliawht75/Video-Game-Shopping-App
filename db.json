@@ -1,18 +1,8 @@
 {
   "cart": [
     {
-      "id": "0",
-      "gameId": 1,
-      "amount": 4
-    },
-    {
       "id": "1",
       "gameId": 2,
-      "amount": 1
-    },
-    {
-      "id": "c7ac",
-      "gameId": "1",
       "amount": 1
     },
     {
@@ -111,6 +101,19 @@
       "releaseYear": 2021,
       "developer": "Cosmic Ventures",
       "price": 8.6
+    },
+    {
+      "id": "8579",
+      "title": "Persona 3",
+      "genre": "RPG",
+      "price": 30
+    },
+    {
+      "id": "e424",
+      "title": "Final Fantasy III",
+      "genre": "PRG",
+      "price": 3,
+      "condition": "Good"
     }
   ]
 }

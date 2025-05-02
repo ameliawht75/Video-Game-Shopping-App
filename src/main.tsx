@@ -9,6 +9,8 @@ import CartList from './components/CartList.tsx'
 import { gamesListLoader } from './components/GameList.tsx'
 import ErrorPage from './components/ErrorPage.tsx'
 import GameDetails from './components/GameDetails.tsx'
+import ReviewPage from './components/ReviewPage.tsx'
+import SellItemForm from './components/SellItemForm.tsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
   {
     path: "/games/:gameId",
     element: <GameDetails />,
+  },
+  {
+    path: "/reviews",
+    element: <ReviewPage />,
+  },
+  {
+    path: "/sell",
+    element: <SellItemForm />,
   }
     ]
   }

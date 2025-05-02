@@ -1,18 +1,15 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Root() {
 
   return (
-    <div className="container">
-      <ul className="nav nav-pills mb-3">
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link">Game List</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="./cart" className="nav-link">Cart</NavLink>
-        </li>
-      </ul>
+    <>
+   <Header />
       <Outlet />
-    </div>
+    <Footer />
+    </>
   )
 }

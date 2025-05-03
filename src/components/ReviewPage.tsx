@@ -9,11 +9,12 @@ interface Review {
   name: string;
   content: string;
   gameId: string;
+  rating: number; // Ensure rating is part of the Review interface
 }
 
 function ReviewPage() {
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [newReview, setNewReview] = useState({ name: '', content: '', gameId: '' });
+  const [newReview, setNewReview] = useState({ name: '', content: '', gameId: '', rating: 0 }); // Include rating in newReview
   const [error, setError] = useState<string | null>(null);
 
   // Fetch reviews on component mount
@@ -41,20 +42,20 @@ function ReviewPage() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, rating: number) => {
     e.preventDefault();
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newReview),
+        body: JSON.stringify({ ...newReview, rating }), // Include rating in the submission
       });
       if (!res.ok) {
         throw new Error('Failed to submit review');
       }
       const data = await res.json();
       setReviews([...reviews, data]);
-      setNewReview({ name: '', content: '', gameId: '' });
+      setNewReview({ name: '', content: '', gameId: '', rating: 0 }); // Reset form, including rating
     } catch (err: any) {
       setError(err.message || 'An error occurred while submitting the review');
     }
@@ -80,6 +81,13 @@ function ReviewPage() {
               <ListGroup.Item key={review.id} className="mb-2">
                 <strong>{review.name}</strong> (Game ID: {review.gameId})
                 <p>{review.content}</p>
+                <div>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <span key={index}>
+                      {index < review.rating ? '⭐' : '☆'}
+                    </span>
+                  ))}
+                </div>
               </ListGroup.Item>
             ))}
           </ListGroup>

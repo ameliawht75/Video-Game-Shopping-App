@@ -1,40 +1,43 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Form, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import { useState } from 'react';
 
 interface ReviewFormProps {
-  newReview: { name: string; content: string; gameId: string };
+  newReview: { name: string; content: string; gameId: string; rating: number };
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  handleSubmit: (e: React.FormEvent) => void;
+  handleSubmit: (e: React.FormEvent, rating: number) => void; // Ensure handleSubmit accepts rating
 }
 
 const colors = {
   orange: "#F2C265",
   grey: "a9a9a9"
-}
+};
 
-const stars = Array(5).fill(0)
-
-
+const stars = Array(5).fill(0);
 
 export default function ReviewForm({ newReview, handleChange, handleSubmit }: ReviewFormProps) {
-  const [rating, setRating] = useState(0)
-  const [hover, setHover] = useState(0)
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
 
   const handleMouseOverStar = (value: number) => {
-    setHover(value)
+    setHover(value);
   };
 
   const handleMouseLeaveStar = () => {
-    setHover(0)
+    setHover(0);
   };
 
   const handleClickStar = (value: number) => {
-    setRating(value)
+    setRating(value);
   };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSubmit(e, rating); // Pass rating to handleSubmit
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={onSubmit}>
       <Form.Group className="mb-3" controlId="name">
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -58,10 +61,9 @@ export default function ReviewForm({ newReview, handleChange, handleSubmit }: Re
         />
       </Form.Group>
       <Form.Group>
+        <Form.Label>Rating</Form.Label>
         <div>
-        {stars.map((_, index) => {
-          return (
-            <div key={index} style={{ display: "inline-block", marginRight: "5px" }}>
+          {stars.map((_, index) => (
             <FaStar
               key={index}
               size={24}
@@ -70,11 +72,9 @@ export default function ReviewForm({ newReview, handleChange, handleSubmit }: Re
               onMouseOver={() => handleMouseOverStar(index + 1)}
               onMouseLeave={handleMouseLeaveStar}
             />
-            </div>
-          );
-        })}
+          ))}
         </div>
-            <p>({rating} Stars)</p>
+        <p>({rating} Stars)</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="content">
         <Form.Label>Review</Form.Label>

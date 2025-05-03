@@ -65,17 +65,13 @@ export default function SellItemForm() {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Genre</Form.Label>
-          <Form.Control
-            type="text"
-            name="genre"
-            placeholder="Enter the item genre"
-            value={newItem.genre}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+        <Form.Label>Genre</Form.Label>
+        <Form.Select aria-label="Default select example">
+          <option>Select Genre of Game</option>
+          <option value="1">RPG</option>
+          <option value="2">Puzzle</option>
+          <option value="3">FPS</option>
+        </Form.Select>
         <Form.Group className="mb-3">
           <Form.Label>Price</Form.Label>
           <Form.Control
@@ -87,17 +83,12 @@ export default function SellItemForm() {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Condition</Form.Label>
-          <Form.Control
-            type="text"
-            name="condition"
-            placeholder="Enter the condition of the game"
-            value={newItem.condition}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+        <Form.Label>Condition</Form.Label>
+        <Form.Select aria-label="Default select example">
+          <option>Condition of Game</option>
+          <option value="1">New</option>
+          <option value="2">Used</option>
+        </Form.Select>
         <Button variant="primary" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Sell Item"}
         </Button>

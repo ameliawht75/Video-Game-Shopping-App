@@ -114,6 +114,13 @@
       "genre": "PRG",
       "price": 3,
       "condition": "Good"
+    },
+    {
+      "id": "cd6f",
+      "title": "Final Fantasy ",
+      "genre": "RPG",
+      "price": 10,
+      "condition": ""
     }
   ]
 }

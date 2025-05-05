@@ -1,3 +1,5 @@
+//Just a generic header for title and navigation.
+
 import { Link } from "react-router-dom";
 
 export default function Header() {

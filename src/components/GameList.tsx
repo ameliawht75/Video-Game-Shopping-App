@@ -44,7 +44,7 @@ export default function GameList() {
     }
     setIsAddingToCart(false);
   };
-
+//I almost feel this could be it's own component.
   return (
     <Container className="py-4">
       <h2 className="display-5 mb-4 text-center">Check Out Our Games!</h2>

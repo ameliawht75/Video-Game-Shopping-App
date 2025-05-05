@@ -1,13 +1,13 @@
 {
   "cart": [
     {
-      "id": "1",
-      "gameId": 2,
+      "id": "989e",
+      "gameId": "1",
       "amount": 1
     },
     {
-      "id": "989e",
-      "gameId": "1",
+      "id": "3d90",
+      "gameId": "2",
       "amount": 1
     }
   ],
@@ -120,6 +120,13 @@
       "title": "Final Fantasy ",
       "genre": "RPG",
       "price": 10,
+      "condition": ""
+    },
+    {
+      "id": "b4dd",
+      "title": "Call of Duty",
+      "genre": "",
+      "price": 12,
       "condition": ""
     }
   ]

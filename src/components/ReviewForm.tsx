@@ -1,3 +1,5 @@
+//Started with the sell item form and modified to fit review format. 
+
 import { Form, Button } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import { useState } from 'react';
@@ -60,10 +62,10 @@ export default function ReviewForm({ newReview, handleChange, handleSubmit }: Re
           required
         />
       </Form.Group>
-      <Form.Group>
+      <Form.Group> 
         <Form.Label>Rating</Form.Label>
         <div>
-          {stars.map((_, index) => (
+          {stars.map((_, index) => ( //This was a bit tricky to figure out and I went through a few different ideas.  
             <FaStar
               key={index}
               size={24}

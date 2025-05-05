@@ -50,7 +50,7 @@ export default function CartList() {
     fetchGames();
   }, []);
 
-  // Handle item deletion
+  // Handle item deletion as I wanted to make sure you could remove and the price would update.
   const handleDelete = async (id: number) => {
     try {
       const response = await fetch(`http://localhost:3000/cart/${id}`, {

@@ -1,3 +1,5 @@
+//Creates a form and page for users to sell their games and updates the database on th home page.
+
 import { useState } from "react";
 import { Form, Button, Alert, Container } from "react-bootstrap";
 
@@ -8,6 +10,7 @@ export default function SellItemForm() {
     price: "",
     condition: "",
   });
+
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,14 +20,14 @@ export default function SellItemForm() {
     setNewItem({ ...newItem, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => { //Found this on stack overflow.  Stared from the example and added from other sources and comments on original post.
     e.preventDefault();
     setIsSubmitting(true);
     setSuccessMessage(null);
     setErrorMessage(null);
 
     try {
-      const response = await fetch("http://localhost:3000/games", {
+      const response = await fetch("http://localhost:3000/games", { //Will be using the db.json file 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,8 +51,10 @@ export default function SellItemForm() {
     }
   };
 
+//Thought about having this be a component but decided to leave as is since the parent -> child -> grandchild was a too much for me to handle at the moment.
+//Also wanted to try out drop-downs.
   return (
-    <Container className="py-4">
+    <Container className="py-4"> 
       <h2 className="mb-4">Sell Your Game</h2>
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
@@ -65,9 +70,9 @@ export default function SellItemForm() {
             required
           />
         </Form.Group>
-        <Form.Label>Genre</Form.Label>
-        <Form.Select aria-label="Default select example">
-          <option>Select Genre of Game</option>
+        <Form.Label>Genre</Form.Label> 
+        <Form.Select aria-label="Default select example" >
+          <option>Select Genre of Game</option> 
           <option value="1">RPG</option>
           <option value="2">Puzzle</option>
           <option value="3">FPS</option>
